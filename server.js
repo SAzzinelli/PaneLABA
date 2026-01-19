@@ -9,6 +9,10 @@ const __dirname = dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Log per debug
+console.log('Environment PORT:', process.env.PORT);
+console.log('Using PORT:', PORT);
+
 const distPath = join(__dirname, 'dist');
 const indexPath = join(distPath, 'index.html');
 

@@ -36,12 +36,24 @@ console.log(`Index file at: ${indexPath}`);
 app.use(express.static(distPath, {
   etag: true,
   lastModified: true,
-  maxAge: '1d'
+  maxAge: '1d',
+  index: false // Non servire index.html automaticamente
 }));
 
-// Tutte le route vanno a index.html (SPA)
+// Route per la root
+app.get('/', (req, res) => {
+  console.log('Serving index.html for root path');
+  res.sendFile(indexPath);
+});
+
+// Tutte le altre route vanno a index.html (SPA)
 app.get('*', (req, res) => {
   console.log(`Serving index.html for route: ${req.path}`);
+  // Verifica se è una richiesta per un file statico (assets)
+  if (req.path.startsWith('/assets/')) {
+    // Lascia che express.static gestisca i file assets
+    return res.status(404).send('Asset not found');
+  }
   res.sendFile(indexPath);
 });
 

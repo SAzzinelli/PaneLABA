@@ -66,3 +66,35 @@ npm run dev
 ## 📝 Note
 
 Il progetto usa Vite come bundler per uno sviluppo veloce e ottimizzato.
+
+## 🌐 Deploy su Cloudflare Pages
+
+Il progetto è configurato per essere deployato su Cloudflare Pages con il dominio **pane.laba.biz**.
+
+### Configurazione Cloudflare Pages:
+
+1. **Build settings:**
+   - Build command: `npm run build`
+   - Build output directory: `dist`
+   - Root directory: `/` (root del progetto)
+
+2. **Environment variables:**
+   - Nessuna variabile d'ambiente richiesta
+
+3. **Custom domain:**
+   - Dominio configurato: `pane.laba.biz`
+   - DNS gestito da Cloudflare
+
+### File di configurazione Cloudflare:
+
+- `_headers` - Headers di sicurezza per Cloudflare Pages
+- `_redirects` - Redirect per SPA (Single Page Application)
+
+### Build locale per test:
+
+```bash
+npm run build
+npm run preview
+```
+
+Questo creerà la build di produzione nella cartella `dist/` e la farà girare localmente per testare prima del deploy.

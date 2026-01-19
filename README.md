@@ -67,34 +67,44 @@ npm run dev
 
 Il progetto usa Vite come bundler per uno sviluppo veloce e ottimizzato.
 
-## 🌐 Deploy su Cloudflare Pages
+## 🌐 Deploy su Railway
 
-Il progetto è configurato per essere deployato su Cloudflare Pages con il dominio **pane.laba.biz**.
+Il progetto è configurato per essere deployato su Railway con il dominio **pane.laba.biz**.
 
-### Configurazione Cloudflare Pages:
+### Configurazione Railway:
 
-1. **Build settings:**
-   - Build command: `npm run build`
-   - Build output directory: `dist`
-   - Root directory: `/` (root del progetto)
+1. **Collega il repository GitHub:**
+   - Vai su Railway Dashboard
+   - Clicca "New Project" → "Deploy from GitHub repo"
+   - Seleziona il repository: `SAzzinelli/PaneLABA`
 
-2. **Environment variables:**
-   - Nessuna variabile d'ambiente richiesta
+2. **Railway rileverà automaticamente:**
+   - Build command: `npm run build` (da railway.json)
+   - Start command: `npm start` (da railway.json)
+   - Port: Railway assegnerà automaticamente una porta (gestita da `process.env.PORT`)
 
 3. **Custom domain:**
-   - Dominio configurato: `pane.laba.biz`
-   - DNS gestito da Cloudflare
+   - Vai su Settings → Domains
+   - Aggiungi il dominio: `pane.laba.biz`
+   - Configura il DNS con i record CNAME forniti da Railway
 
-### File di configurazione Cloudflare:
+### File di configurazione:
 
-- `_headers` - Headers di sicurezza per Cloudflare Pages
-- `_redirects` - Redirect per SPA (Single Page Application)
+- `railway.json` - Configurazione Railway per build e deploy
+- `server.js` - Server Express per servire i file statici
+- `package.json` - Scripts e dipendenze
 
-### Build locale per test:
+### Build e test locale:
 
 ```bash
+# Installa le dipendenze (incluso express)
+npm install
+
+# Crea la build di produzione
 npm run build
-npm run preview
+
+# Avvia il server locale (simula Railway)
+npm start
 ```
 
-Questo creerà la build di produzione nella cartella `dist/` e la farà girare localmente per testare prima del deploy.
+Il server sarà disponibile su `http://localhost:3000` (o la porta specificata da Railway).

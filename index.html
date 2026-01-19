@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maninpasta - Dimenticato il pane?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+    <div class="bg-container" id="bgContainer">
+        <!-- Icons injected via JS for pattern -->
+    </div>
+
+    <main class="content">
+        <div class="clock-container">
+            <div class="clock-text">Sono le <span id="currentTime">--:--</span></div>
+            <div class="late-warning" id="lateWarning" style="display: none;">
+                ⚠️ Sei in ritardo! Chiama subito!
+            </div>
+            <div class="too-late-message" id="tooLateMessage" style="display: none;">
+                😔 Peccato... sarà per domani... niente pane stasera
+            </div>
+        </div>
+        
+        <h1>Dimenticato il pane?</h1>
+        <p>Prenotalo ora a MANINPASTA</p>
+        
+        <a href="tel:+390556530698" class="cta-button">
+            <!-- Phone Icon -->
+            <svg viewBox="0 0 24 24">
+                <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.49-5.15-3.8-6.62-6.63l1.97-1.57c.26-.26.35-.63.24-1.01a18.23 18.23 0 0 1-.56-3.53c-.09-.77-.74-1.35-1.52-1.35h-3.6c-.85 0-1.56.71-1.52 1.57.17 9.17 7.63 16.63 16.8 16.8.85.04 1.57-.67 1.57-1.52v-3.6c0-.78-.58-1.43-1.35-1.51z"/>
+            </svg>
+            <span>055 653 0698</span>
+        </a>
+    </main>
+
+    <script src="/script.js"></script>
+</body>
+</html>

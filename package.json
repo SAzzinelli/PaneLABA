@@ -1,0 +1,17 @@
+{
+  "name": "maninpasta-prenota-pane",
+  "version": "1.0.0",
+  "description": "Pagina prenotazione pane per Maninpasta",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": ["pane", "prenotazione", "maninpasta"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}

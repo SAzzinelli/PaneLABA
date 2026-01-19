@@ -110,30 +110,6 @@ function initParticles() {
     }, 2000);
 }
 
-function createParticle() {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    
-    const size = Math.random() * 4 + 2;
-    particle.style.width = `${size}px`;
-    particle.style.height = `${size}px`;
-    
-    const startX = Math.random() * window.innerWidth;
-    particle.style.left = `${startX}px`;
-    
-    const duration = Math.random() * 10 + 10;
-    particle.style.animationDuration = `${duration}s`;
-    
-    particle.style.animationDelay = `${Math.random() * 2}s`;
-    
-    document.body.appendChild(particle);
-    
-    // Rimuovi dopo l'animazione
-    setTimeout(() => {
-        particle.remove();
-    }, (duration + 2) * 1000);
-}
-
 // Interazioni avanzate per il bottone
 function initButtonInteractions() {
     const button = document.querySelector('.cta-button');

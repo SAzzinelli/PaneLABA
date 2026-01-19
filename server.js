@@ -45,10 +45,22 @@ app.get('*', (req, res) => {
   res.sendFile(indexPath);
 });
 
-app.listen(PORT, '0.0.0.0', () => {
+// Avvia il server
+const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚀 Server running on port ${PORT}`);
   console.log(`📁 Serving from: ${distPath}`);
   console.log(`🌐 Access the app at: http://0.0.0.0:${PORT}`);
+  console.log(`✅ Ready to accept connections`);
+});
+
+// Gestione errori del server
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`❌ Port ${PORT} is already in use`);
+  } else {
+    console.error('❌ Server error:', err);
+  }
+  process.exit(1);
 });
 
 // Gestione errori

@@ -16,6 +16,12 @@ console.log('Using PORT:', PORT);
 const distPath = join(__dirname, 'dist');
 const indexPath = join(distPath, 'index.html');
 
+// Middleware per logging delle richieste
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.path}`);
+  next();
+});
+
 // Verifica che la cartella dist esista
 if (!existsSync(distPath)) {
   console.error(`ERROR: dist folder not found at ${distPath}`);
@@ -43,18 +49,23 @@ app.use(express.static(distPath, {
 // Route per la root
 app.get('/', (req, res) => {
   console.log('Serving index.html for root path');
-  res.sendFile(indexPath);
+  res.sendFile(indexPath, (err) => {
+    if (err) {
+      console.error('Error sending index.html:', err);
+      res.status(500).send('Error loading page');
+    }
+  });
 });
 
 // Tutte le altre route vanno a index.html (SPA)
 app.get('*', (req, res) => {
   console.log(`Serving index.html for route: ${req.path}`);
-  // Verifica se è una richiesta per un file statico (assets)
-  if (req.path.startsWith('/assets/')) {
-    // Lascia che express.static gestisca i file assets
-    return res.status(404).send('Asset not found');
-  }
-  res.sendFile(indexPath);
+  res.sendFile(indexPath, (err) => {
+    if (err) {
+      console.error('Error sending index.html:', err);
+      res.status(500).send('Error loading page');
+    }
+  });
 });
 
 // Avvia il server
